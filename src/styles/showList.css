@@ -32,7 +32,12 @@ img {
   height: 30px;
   width: 30px;
 }
-.change-percentage p .down-arrow {
+.change-percentage .green {
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.change-percentage .red {
   color: red;
   font-weight: bold;
 }

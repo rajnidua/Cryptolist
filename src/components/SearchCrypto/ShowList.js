@@ -5,6 +5,11 @@ const ShowList = (props) => {
   console.log(props);
   return (
     <div className="crypto-container">
+      <div className="crypto-row">
+        <h3>Name</h3>
+        <h3>Change(24hr)</h3>
+        <h3>Price</h3>
+      </div>
       {props.filteredList.map((crypto) => (
         <div className="crypto-row" key={crypto.id}>
           <div className="crypto-name">
@@ -24,7 +29,7 @@ const ShowList = (props) => {
               </p>
             ) : (
               <p className="green">
-                {crypto.market_cap_change_percentage_24h.toFixed(2)}
+                +{crypto.market_cap_change_percentage_24h.toFixed(2)}
                 <span className="up-arrow">&#x2191;</span>
               </p>
             )}
