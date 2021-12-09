@@ -37,8 +37,10 @@ const SearchCryptoBody = () => {
   console.log("search input is " + searchInput);
   console.log(cryptos[0].name);
   //const filteredList = cryptos.filter((crypto) => crypto.name === "Bitcoin");
-  const filteredList = cryptos.filter((crypto) =>
-    crypto.name.toLowerCase().includes(searchInput.toLowerCase())
+  const filteredList = cryptos.filter(
+    (crypto) =>
+      crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
   );
   console.log("filtered list is ", filteredList);
 
