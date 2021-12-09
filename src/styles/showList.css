@@ -1,0 +1,42 @@
+.crypto-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.crypto-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid black;
+}
+.crypto-row > * {
+  flex: 1;
+}
+
+.crypto-name {
+  display: flex;
+  align-items: center;
+}
+
+.crypto-name .name-section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2px;
+}
+.crypto-name .name-section p {
+}
+
+img {
+  height: 30px;
+  width: 30px;
+}
+.change-percentage p .down-arrow {
+  color: red;
+  font-weight: bold;
+}
+
+.title {
+  font-weight: bold;
+}
