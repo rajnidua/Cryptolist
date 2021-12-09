@@ -18,10 +18,8 @@ const SearchCryptoBody = () => {
       /* const response = await axios.get(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       ); */
-      console.log(response);
-      console.log(response.status);
+
       setCryptos(response.data);
-      console.log("Cryptos new value is:  ", cryptos);
 
       if (response.status !== 200) {
         //throw new Error("something went wrong!");
@@ -34,15 +32,13 @@ const SearchCryptoBody = () => {
       console.log(err);
     }
   };
-  console.log("search input is " + searchInput);
-  console.log(cryptos[0].name);
+
   //const filteredList = cryptos.filter((crypto) => crypto.name === "Bitcoin");
   const filteredList = cryptos.filter(
     (crypto) =>
       crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
   );
-  console.log("filtered list is ", filteredList);
 
   /* useEffect(() => {
     axios
@@ -73,7 +69,11 @@ const SearchCryptoBody = () => {
           Submit Search
         </button>
       </form>
-      <ShowList loading={loading} setLoading={setLoading} />
+      <ShowList
+        loading={loading}
+        setLoading={setLoading}
+        filteredList={filteredList}
+      />
     </div>
   );
 };
