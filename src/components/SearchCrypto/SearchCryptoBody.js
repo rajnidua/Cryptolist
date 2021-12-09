@@ -4,7 +4,7 @@ import { searchCryptoList } from "../../utils/API";
 import ShowList from "./ShowList";
 
 const SearchCryptoBody = () => {
-  const [coins, setcoins] = useState([]);
+  const [cryptos, setCryptos] = useState([]);
   const [error, setError] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState("loading");
@@ -20,6 +20,8 @@ const SearchCryptoBody = () => {
       ); */
       console.log(response);
       console.log(response.status);
+      setCryptos(response.data);
+      console.log("Cryptos new value is:  ", cryptos);
 
       if (response.status !== 200) {
         //throw new Error("something went wrong!");
@@ -32,6 +34,13 @@ const SearchCryptoBody = () => {
       console.log(err);
     }
   };
+  console.log("search input is " + searchInput);
+  console.log(cryptos[0].name);
+  //const filteredList = cryptos.filter((crypto) => crypto.name === "Bitcoin");
+  const filteredList = cryptos.filter((crypto) =>
+    crypto.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+  console.log("filtered list is ", filteredList);
 
   /* useEffect(() => {
     axios
