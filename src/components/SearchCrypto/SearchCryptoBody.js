@@ -7,14 +7,14 @@ const SearchCryptoBody = () => {
   const [coins, setcoins] = useState([]);
   const [error, setError] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState("loading");
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await searchCryptoList();
-      setLoading(false);
+      setLoading("not loading");
       /* const response = await axios.get(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       ); */
@@ -62,7 +62,7 @@ const SearchCryptoBody = () => {
           Submit Search
         </button>
       </form>
-      <ShowList />
+      <ShowList loading={loading} setLoading={setLoading} />
     </div>
   );
 };
