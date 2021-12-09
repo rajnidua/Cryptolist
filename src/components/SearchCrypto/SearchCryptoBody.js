@@ -3,6 +3,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { searchCryptoList } from "../../utils/API";
 import ShowList from "./ShowList";
+import _ from "lodash";
+import Pagination from "../Pagination";
+import { Paginate } from "../../utils/Paginate";
 
 const SearchCryptoBody = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -10,9 +13,15 @@ const SearchCryptoBody = () => {
   const [error, setError] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState("loading");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+  };
+  const handlePageChange = (page) => {
+    console.log("the page change value is: ", page);
+    setCurrentPage(page);
   };
 
   const getData = async () => {
@@ -29,14 +38,23 @@ const SearchCryptoBody = () => {
       console.log(err);
     }
   };
+  const cryptosLength = Object.keys(cryptos).length;
 
-  console.log("value of cryptos is: ", cryptos);
-  //const filteredList = cryptos.filter((crypto) => crypto.name === "Bitcoin");
-  const filteredList = cryptos.filter(
+  const filteredList = searchInput
+    ? cryptos.filter(
+        (crypto) =>
+          crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+          crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
+      )
+    : cryptos;
+
+  const cryptoPaginate = Paginate(filteredList, currentPage, pageSize);
+
+  /* const filteredList = cryptos.filter(
     (crypto) =>
       crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
-  );
+  ); */
 
   useEffect(() => {
     getData();
@@ -71,19 +89,42 @@ const SearchCryptoBody = () => {
           Submit Search
         </button>
       </form>
-      {searchInput ? (
+
+      <div>
+        <ShowList
+          loading={loading}
+          setLoading={setLoading}
+          filteredList={cryptoPaginate}
+        />
+        <Pagination
+          itemsCount={cryptosLength}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
+
+      {/* {searchInput ? (
         <ShowList
           loading={loading}
           setLoading={setLoading}
           filteredList={filteredList}
         />
       ) : (
-        <ShowList
-          loading={loading}
-          setLoading={setLoading}
-          filteredList={cryptos}
-        />
-      )}
+        <div>
+          <ShowList
+            loading={loading}
+            setLoading={setLoading}
+            filteredList={cryptos}
+          />
+          <Pagination
+            itemsCount={cryptosLength}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )} */}
     </div>
   );
 };
