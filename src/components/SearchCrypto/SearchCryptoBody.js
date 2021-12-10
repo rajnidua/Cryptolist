@@ -15,7 +15,7 @@ const SearchCryptoBody = () => {
   const [coinList, setCoinList] = useState([]);
   const [error, setError] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [loading, setLoading] = useState("loading");
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [firstLoad, setFirstLoad] = useState(true);
@@ -38,7 +38,7 @@ const SearchCryptoBody = () => {
     }
     try {
       const response = await searchCryptoList(cryptoPageNum);
-      setLoading("not loading");
+      setLoading(false);
       console.log(response.data);
       setCryptos(response.data);
 
@@ -54,7 +54,7 @@ const SearchCryptoBody = () => {
     setCryptoPageNum(1);
     try {
       const response = await searchCryptoList(1);
-      setLoading("not loading");
+      setLoading(false);
       console.log(response.data);
       setCryptos(response.data);
 
@@ -70,7 +70,7 @@ const SearchCryptoBody = () => {
     setCryptoPageNum(1);
     try {
       const response = await searchCryptoList(cryptoPageNum);
-      setLoading("not loading");
+      setLoading(false);
       console.log(response.data);
       setCryptos(response.data);
 
@@ -82,37 +82,6 @@ const SearchCryptoBody = () => {
     }
   };
 
-  /* const getData = async () => {
-    for (let i = 1; i <= 4; i++) {
-      axios
-        .get(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${i}&sparkline=false`
-        )
-        .then((res) => {
-          setAllPagesResponse(res.data);
-          console.log("all pages response is ", allPagesResponse);
-        })
-        .catch((err) => console.error(err));
-      setCryptoPageNum(cryptoPageNum + 1);
-    }
-  };
-  if (cryptoPageNum === 4) {
-    setCryptos(allPagesResponse);
-  } */
-  /* const getData = async () => {
-    try {
-      const response = await searchCryptoList(cryptoPageNum);
-      setLoading("not loading");
-      console.log(response.data);
-      setCryptos(response.data);
-
-      if (response.status !== 200) {
-        setError(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }; */
   const cryptosLength = Object.keys(cryptos).length;
 
   const filteredList = searchInput
@@ -124,36 +93,6 @@ const SearchCryptoBody = () => {
     : cryptos;
 
   const cryptoPaginate = Paginate(filteredList, currentPage, pageSize);
-
-  /* const filteredList = cryptos.filter(
-    (crypto) =>
-      crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-      crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
-  ); */
-
-  /* useEffect(() => {
-    getData();
-  }, []); */
-
-  /* useEffect(() => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-      )
-      .then((res) => {
-        setcoins(res.data);
-        console.log(coins);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []); */
-
-  useEffect(() => {
-    if (cryptoPageNum > 4) {
-      setCryptoPageNum(0);
-    }
-  }, [cryptoPageNum]);
 
   return (
     <div className="container">
@@ -173,11 +112,20 @@ const SearchCryptoBody = () => {
       </form>
 
       <div>
-        <ShowList
+        {loading ? (
+          <div>I am loading</div>
+        ) : (
+          <ShowList
+            loading={loading}
+            setLoading={setLoading}
+            filteredList={cryptoPaginate}
+          />
+        )}
+        {/*  <ShowList
           loading={loading}
           setLoading={setLoading}
           filteredList={cryptoPaginate}
-        />
+        /> */}
         <Pagination
           itemsCount={cryptosLength}
           pageSize={pageSize}
@@ -185,15 +133,6 @@ const SearchCryptoBody = () => {
           onPageChange={handlePageChange}
         />
 
-        {/* {cryptoPageNum === 5 ? setCryptoPageNum(0) : ""} */}
-        {/*  {cryptoPageNum === 5 || cryptoPageNum === 1 ? (
-          <div>
-            <button onClick={loadFromBeginning}>Load from Beginning</button>
-          </div>
-        ) : (
-          ""
-        )} */}
-        {/* <button onClick={loadFromBeginning}>Load from Beginning</button> */}
         <button
           onClick={firstPage}
           className="btn-first-page"
@@ -209,14 +148,6 @@ const SearchCryptoBody = () => {
         >
           <p>LOAD NEW PAGE</p>
         </button>
-
-        {/* {cryptoPageNum < 4 ? (
-          <button onClick={loadMore}>
-            <p>LOAD NEW PAGE</p>
-          </button>
-        ) : (
-          ""
-        )} */}
       </div>
     </div>
   );

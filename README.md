@@ -13,3 +13,7 @@ npm start
 ```md
 npm install axios
 ```
+
+```md
+npm install react-loader-spinner --save
+```
