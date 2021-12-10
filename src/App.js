@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SearchCryptoList from "./pages/SearchCryptoList";
 import TrendingCrypto from "./pages/TrendingCrypto";
 import Navbar from "./components/Navbar/Navbar";
+import SingleCrypto from "./pages/SingleCrypto";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={SearchCryptoList} />
           <Route exact path="/trendingCrypto" component={TrendingCrypto} />
-
+          <Route exact path="/singleCrypto" component={SingleCrypto} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Switch>
       </>

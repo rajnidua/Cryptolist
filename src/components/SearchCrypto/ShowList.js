@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/showList.css";
+import SingleCryptoBody from "../SingleCrypto/SingleCryptoBody";
+import { Link } from "react-router-dom";
 
 const ShowList = (props) => {
   console.log(props);
@@ -14,7 +16,9 @@ const ShowList = (props) => {
         <div className="crypto-row" key={crypto.id}>
           <div className="crypto-name">
             <div className="img-section">
-              <img src={crypto.image} alt="image" />
+              <Link to="/singleCrypto" state={crypto.id}>
+                <img src={crypto.image} alt="image" />
+              </Link>
             </div>
             <div className="name-section">
               <div className="title">{crypto.name}</div>
