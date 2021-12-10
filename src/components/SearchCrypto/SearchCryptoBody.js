@@ -6,6 +6,7 @@ import ShowList from "./ShowList";
 import _ from "lodash";
 import Pagination from "../Pagination";
 import { Paginate } from "../../utils/Paginate";
+import "../../styles/searchCrypto.css";
 
 const SearchCryptoBody = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -192,11 +193,11 @@ const SearchCryptoBody = () => {
           ""
         )} */}
         {/* <button onClick={loadFromBeginning}>Load from Beginning</button> */}
-        <button onClick={firstPage}>
+        <button onClick={firstPage} className="btn-first-page">
           <p>GO TO FIRST PAGE</p>
         </button>
 
-        <button onClick={loadMore}>
+        <button onClick={loadMore} className="btn-new-page">
           <p>LOAD NEW PAGE</p>
         </button>
 
