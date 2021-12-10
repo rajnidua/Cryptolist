@@ -164,6 +164,7 @@ const SearchCryptoBody = () => {
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
           size="lg"
+          data-testid="input-element"
           placeholder="Search for a Cryptolist"
         />
         <button style={{ cursor: "pointer" }} type="submit">
