@@ -7,3 +7,8 @@
   background-color: #89b589;
   padding: 10px;
 }
+
+.show-loader {
+  text-align: center;
+  margin-top: 100px;
+}

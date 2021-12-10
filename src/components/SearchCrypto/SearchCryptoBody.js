@@ -7,6 +7,7 @@ import _ from "lodash";
 import Pagination from "../Pagination";
 import { Paginate } from "../../utils/Paginate";
 import "../../styles/searchCrypto.css";
+import Loader from "react-loader-spinner";
 
 const SearchCryptoBody = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -29,7 +30,17 @@ const SearchCryptoBody = () => {
     setCurrentPage(page);
   };
 
+  //const Loader = () => <div>Loading...</div>;
+  const hideLoader = () => {
+    setLoading(false);
+  };
+
+  const showLoader = () => {
+    setLoading(true);
+  };
+
   const loadMore = async () => {
+    showLoader();
     console.log("value of crypto num is(loadMore): " + cryptoPageNum);
     if (cryptoPageNum === 0) {
       setCryptoPageNum(1);
@@ -39,6 +50,7 @@ const SearchCryptoBody = () => {
     try {
       const response = await searchCryptoList(cryptoPageNum);
       setLoading(false);
+      hideLoader();
       console.log(response.data);
       setCryptos(response.data);
 
@@ -51,10 +63,12 @@ const SearchCryptoBody = () => {
   };
 
   const firstPage = async () => {
+    showLoader();
     setCryptoPageNum(1);
     try {
       const response = await searchCryptoList(1);
       setLoading(false);
+      hideLoader();
       console.log(response.data);
       setCryptos(response.data);
 
@@ -113,7 +127,15 @@ const SearchCryptoBody = () => {
 
       <div>
         {loading ? (
-          <div>I am loading</div>
+          <div className="show-loader">
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={100}
+              width={100}
+              timeout={3000} //3 secs
+            />
+          </div>
         ) : (
           <ShowList
             loading={loading}
