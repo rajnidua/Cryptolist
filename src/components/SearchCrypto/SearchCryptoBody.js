@@ -98,15 +98,21 @@ const SearchCryptoBody = () => {
 
   const cryptosLength = Object.keys(cryptos).length;
 
-  const filteredList = searchInput
+  /* const filteredList = searchInput
     ? cryptos.filter(
         (crypto) =>
           crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
           crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
       )
-    : cryptos;
+    : cryptos; */
 
-  const cryptoPaginate = Paginate(filteredList, currentPage, pageSize);
+  const filteredListAll = cryptos.filter(
+    (crypto) =>
+      crypto.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      crypto.symbol.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+  const cryptoPaginate = Paginate(cryptos, currentPage, pageSize);
 
   return (
     <div className="container">
@@ -136,24 +142,27 @@ const SearchCryptoBody = () => {
               timeout={3000} //3 secs
             />
           </div>
+        ) : !searchInput.length ? (
+          <div>
+            <ShowList
+              loading={loading}
+              setLoading={setLoading}
+              filteredList={cryptoPaginate}
+            />
+            <Pagination
+              itemsCount={cryptosLength}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
         ) : (
           <ShowList
             loading={loading}
             setLoading={setLoading}
-            filteredList={cryptoPaginate}
+            filteredList={filteredListAll}
           />
         )}
-        {/*  <ShowList
-          loading={loading}
-          setLoading={setLoading}
-          filteredList={cryptoPaginate}
-        /> */}
-        <Pagination
-          itemsCount={cryptosLength}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
 
         <button
           onClick={firstPage}
