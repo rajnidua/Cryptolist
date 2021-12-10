@@ -21,3 +21,7 @@ npm install react-loader-spinner --save
 ```md
 npm install --save styled-components
 ```
+
+```md
+npm i react-google-charts
+```
