@@ -44,9 +44,10 @@ const FindTrending = () => {
     <div
       style={{
         display: "flex",
-        justifyContent: "flexStart",
+
+        justifyContent: "space-between",
         alignItems: "Center",
-        height: "100vh",
+        width: "800px",
       }}
     >
       {loading || !cryptosLength ? (

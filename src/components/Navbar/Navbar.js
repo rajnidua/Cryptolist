@@ -15,12 +15,13 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
+          <NavLink to="/" activeStyle>
+            Search Crypto
+          </NavLink>
           <NavLink to="/trendingCrypto" activeStyle>
-            About
+            Trending
           </NavLink>
-          <NavLink to="/events" activeStyle>
-            Events
-          </NavLink>
+
           <NavLink to="/annual" activeStyle>
             Annual Report
           </NavLink>
