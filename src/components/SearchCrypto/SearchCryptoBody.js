@@ -194,11 +194,19 @@ const SearchCryptoBody = () => {
           ""
         )} */}
         {/* <button onClick={loadFromBeginning}>Load from Beginning</button> */}
-        <button onClick={firstPage} className="btn-first-page">
+        <button
+          onClick={firstPage}
+          className="btn-first-page"
+          data-testid="first-page"
+        >
           <p>GO TO FIRST PAGE</p>
         </button>
 
-        <button onClick={loadMore} className="btn-new-page">
+        <button
+          onClick={loadMore}
+          className="btn-new-page"
+          data-testid="next-page"
+        >
           <p>LOAD NEW PAGE</p>
         </button>
 
