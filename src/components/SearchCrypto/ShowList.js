@@ -16,9 +16,27 @@ const ShowList = (props) => {
         <div className="crypto-row" key={crypto.id}>
           <div className="crypto-name">
             <div className="img-section">
-              <Link to="/singleCrypto" state={crypto.id}>
+              {/*  <Link to="/singleCrypto" state={crypto.id}>
+                <img src={crypto.image} alt="image" />
+              </Link> */}
+              <Link
+                to={{
+                  pathname: "/singleCrypto",
+                  state: [crypto.id],
+                }}
+                className="btn"
+              >
                 <img src={crypto.image} alt="image" />
               </Link>
+              {/* <Link
+                to={{
+                  pathname: "/EnrollmentConfirmation",
+                  state: [newProps],
+                }}
+                className="btn"
+              >
+                Enroll 
+              </Link>*/}
             </div>
             <div className="name-section">
               <div className="title">{crypto.name}</div>
