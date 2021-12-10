@@ -29,7 +29,10 @@ const ShowList = (props) => {
               </p>
             ) : (
               <p className="green">
-                +{crypto.market_cap_change_percentage_24h.toFixed(2)}
+                +
+                {crypto.market_cap_change_percentage_24h
+                  ? crypto.market_cap_change_percentage_24h.toFixed(2)
+                  : ""}
                 <span className="up-arrow">&#x2191;</span>
               </p>
             )}

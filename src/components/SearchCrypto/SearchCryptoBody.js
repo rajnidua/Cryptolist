@@ -30,9 +30,29 @@ const SearchCryptoBody = () => {
 
   const loadMore = async () => {
     console.log("value of crypto num is(loadMore): " + cryptoPageNum);
-    setCryptoPageNum(cryptoPageNum + 1);
+    if (cryptoPageNum === 0) {
+      setCryptoPageNum(1);
+    } else {
+      setCryptoPageNum(cryptoPageNum + 1);
+    }
     try {
       const response = await searchCryptoList(cryptoPageNum);
+      setLoading("not loading");
+      console.log(response.data);
+      setCryptos(response.data);
+
+      if (response.status !== 200) {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const firstPage = async () => {
+    setCryptoPageNum(1);
+    try {
+      const response = await searchCryptoList(1);
       setLoading("not loading");
       console.log(response.data);
       setCryptos(response.data);
@@ -128,6 +148,12 @@ const SearchCryptoBody = () => {
       });
   }, []); */
 
+  useEffect(() => {
+    if (cryptoPageNum > 4) {
+      setCryptoPageNum(0);
+    }
+  }, [cryptoPageNum]);
+
   return (
     <div className="container">
       <form onSubmit={handleFormSubmit}>
@@ -156,15 +182,8 @@ const SearchCryptoBody = () => {
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
-        {/*  {cryptoPageNum === 5 ? setCryptoPageNum(1) : ""}
-        <button onClick={loadFromBeginning}>Load from Beginning</button>
-        {cryptoPageNum <= 4 ? (
-          <button onClick={loadMore}>Load More(101-200)</button>
-        ) : (
-          ""
-        )} */}
 
-        {cryptoPageNum === 5 ? setCryptoPageNum(0) : ""}
+        {/* {cryptoPageNum === 5 ? setCryptoPageNum(0) : ""} */}
         {/*  {cryptoPageNum === 5 || cryptoPageNum === 1 ? (
           <div>
             <button onClick={loadFromBeginning}>Load from Beginning</button>
@@ -173,42 +192,22 @@ const SearchCryptoBody = () => {
           ""
         )} */}
         {/* <button onClick={loadFromBeginning}>Load from Beginning</button> */}
-        {cryptoPageNum <= 4 ? (
+        <button onClick={firstPage}>
+          <p>GO TO FIRST PAGE</p>
+        </button>
+
+        <button onClick={loadMore}>
+          <p>LOAD NEW PAGE</p>
+        </button>
+
+        {/* {cryptoPageNum < 4 ? (
           <button onClick={loadMore}>
-            {cryptoPageNum === 4 ? (
-              <div>
-                <p>Load from start</p>
-              </div>
-            ) : (
-              <p>Load Next</p>
-            )}
+            <p>LOAD NEW PAGE</p>
           </button>
         ) : (
           ""
-        )}
+        )} */}
       </div>
-
-      {/* {searchInput ? (
-        <ShowList
-          loading={loading}
-          setLoading={setLoading}
-          filteredList={filteredList}
-        />
-      ) : (
-        <div>
-          <ShowList
-            loading={loading}
-            setLoading={setLoading}
-            filteredList={cryptos}
-          />
-          <Pagination
-            itemsCount={cryptosLength}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          />
-        </div>
-      )} */}
     </div>
   );
 };
