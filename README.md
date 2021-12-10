@@ -17,3 +17,7 @@ npm install axios
 ```md
 npm install react-loader-spinner --save
 ```
+
+```md
+npm install --save styled-components
+```

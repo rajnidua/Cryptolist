@@ -1,8 +1,13 @@
 import React from "react";
 import SearchCryptoBody from "../components/SearchCrypto/SearchCryptoBody";
+import Header from "../components/Header/Header";
 
 const SearchCryptoList = () => {
-  return <SearchCryptoBody />;
+  return (
+    <div>
+      <SearchCryptoBody />
+    </div>
+  );
 };
 
 export default SearchCryptoList;
