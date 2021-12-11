@@ -1,0 +1,35 @@
+.container-trending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1300px;
+  height: 70vh;
+}
+
+.card-section {
+  display: flex;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-section > * {
+  flex: 1 1 160px;
+}
+
+h1 {
+  font-family: "Monoton", sans-serif;
+}
+
+.show-card {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 4px dotted black;
+  margin: 10px;
+  align-items: center;
+  font-family: "Orbitron", sans-serif;
+  border-radius: 20%;
+  background-color: #e0a5db;
+}

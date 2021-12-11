@@ -63,11 +63,23 @@ const FilterCryptosBody = (props) => {
         />
       </div>
       <div className="result-container">
-        <ShowList
-          loading={loading}
-          setLoading={setLoading}
-          filteredList={filteredListAll}
-        />
+        {loading ? (
+          <div className="show-loader">
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={100}
+              width={100}
+              timeout={3000} //3 secs
+            />
+          </div>
+        ) : (
+          <ShowList
+            loading={loading}
+            setLoading={setLoading}
+            filteredList={filteredListAll}
+          />
+        )}
       </div>
     </div>
   );

@@ -15,18 +15,18 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
-          <NavLink to="/" activeStyle>
+          {/* <NavLink to="/abc" activeStyle>
             Search Crypto
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/trendingCrypto" activeStyle>
-            Trending
+            TRENDING
           </NavLink>
 
-          <NavLink to="/filterCryptos" activeStyle>
-            Search
+          <NavLink to="/" activeStyle>
+            SEARCH
           </NavLink>
           <NavLink to="/allCryptos" activeStyle>
-            All Cryptos
+            ALL CRYPTOS
           </NavLink>
         </NavMenu>
         <NavBtn>

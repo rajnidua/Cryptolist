@@ -1,44 +1,30 @@
 import React from "react";
+import "../../styles/trendingCrypto.css";
+import { Link } from "react-router-dom";
 
 const TrendingCryptoBody = (props) => {
   console.log(props);
   console.log("my trend", props.trendingList.coins[0].item.id);
   return (
-    <div>
-      <divColumn
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flexStart",
-          alignItems: "Center",
-        }}
-      ></divColumn>
-      <divRow
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "Center",
-          margin: "10px",
-        }}
-      ></divRow>
-      <img
-        style={{
-          height: "100px",
-          border: "solid 2px blue",
-        }}
-      ></img>
+    <div className="container-trending">
+      <h1>Top 7 Trending Cryptos</h1>
 
-      <divColumn>
-        <h1>Welcome to GeeksforGeeks Team</h1>
-        <divRow>
-          {props.trendingList.coins.map((coin) => (
-            <divRow key={coin.item.id}>
-              <img src={coin.item.large}></img>
-            </divRow>
-          ))}
-        </divRow>
-      </divColumn>
+      <div className="card-section">
+        {props.trendingList.coins.map((coin) => (
+          <div key={coin.item.id} className="show-card">
+            <Link
+              to={{
+                pathname: "/singleCrypto",
+                state: [coin.item.id],
+              }}
+            >
+              <img src={coin.item.thumb}></img>
+            </Link>
+            <div>{coin.item.symbol.toUpperCase()}</div>
+            <div>{coin.item.name.toUpperCase()}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

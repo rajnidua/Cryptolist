@@ -41,15 +41,7 @@ const FindTrending = () => {
     trendingCryptoList();
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-
-        justifyContent: "space-between",
-        alignItems: "Center",
-        width: "800px",
-      }}
-    >
+    <div>
       {loading || !cryptosLength ? (
         <div>loading</div>
       ) : (

@@ -15,11 +15,11 @@ function App() {
       <>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={SearchCryptoList} />
+          <Route exact path="/abc" component={SearchCryptoList} />
           <Route exact path="/trendingCrypto" component={TrendingCrypto} />
           <Route exact path="/singleCrypto" component={SingleCrypto} />
           <Route exact path="/allCryptos" component={AllCryptos} />
-          <Route exact path="/filterCryptos" component={FilterCryptos} />
+          <Route exact path="/" component={FilterCryptos} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Switch>
       </>
