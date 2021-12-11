@@ -82,7 +82,11 @@ const CryptoChart = (props) => {
   return (
     <div className={classes.container}>
       {!chartData ? (
-        <CircularProgress style={{ color: "gold" }} size={250} thickness={1} />
+        <CircularProgress
+          style={{ color: "#0096ff" }}
+          size={250}
+          thickness={1}
+        />
       ) : (
         <>
           <Line
@@ -100,7 +104,7 @@ const CryptoChart = (props) => {
                 {
                   data: chartData.map((coin) => coin[1]),
                   label: `Price ( Past ${days} Days ) in ${currency}`,
-                  borderColor: "#EEBC1D",
+                  borderColor: "#0096ff",
                 },
               ],
             }}

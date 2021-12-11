@@ -28,3 +28,8 @@
 
   box-shadow: 5px inset;
 }
+
+.btn-new-page {
+  background-color: #0096ff;
+  color: white;
+}

@@ -4,17 +4,18 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 40px;
+  background-color: #ffffff;
 }
 
 .crypto-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 2px solid #8e96b5;
+  border-bottom: 2px solid #d6d8da;
 }
 
 .first {
-  background-color: #8e96b5;
+  background-color: #d7dced;
 }
 
 .first-col {
@@ -62,9 +63,10 @@ img {
 }
 
 .btn-buy {
-  background-color: #bea5ae;
+  background-color: #0096ff;
   max-width: 100px;
   font-weight: bold;
+  color: white;
 }
 
 .btn-buy:hover {
@@ -74,4 +76,7 @@ img {
 
 .btn-buy-title {
   max-width: 100px;
+}
+.first h4 {
+  color: gray;
 }

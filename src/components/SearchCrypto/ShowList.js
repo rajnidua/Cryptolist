@@ -13,7 +13,7 @@ const ShowList = (props) => {
         <h4>Price</h4>
         <h4>Change%</h4>
         <h4>Volume</h4>
-        <h4 className="btn-buy-title">Buy</h4>
+        <h4 className="btn-buy-title">VIEW</h4>
       </div>
       {props.filteredList.map((crypto) => (
         <div className="crypto-row" key={crypto.id}>
@@ -53,7 +53,9 @@ const ShowList = (props) => {
           <div className="current-price">${crypto.current_price}</div>
           <div className="volume">{crypto.price_change_percentage_24h}</div>
           <div className="volume">{crypto.total_volume}</div>
-          <button className="btn-buy">BUY {crypto.symbol.toUpperCase()}</button>
+          <button className="btn-buy">
+            VIEW {crypto.symbol.toUpperCase()}
+          </button>
         </div>
       ))}
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getDatasetAtEvent } from "react-chartjs-2";
 import { getSingleCrypto } from "../../utils/API";
+import "../../styles/singleCrypto.css";
 
 const SingleCryptoBody = (props) => {
   console.log("props for single crypto", props);
@@ -41,21 +42,13 @@ const SingleCryptoBody = (props) => {
   return (
     <div className="single-crypto-container">
       <img src={props.crypto.large}></img>
-      <div>{props.crypto.name}</div>
-      <div>{props.crypto.market_cap_rank}</div>
-      <div>NAME:{singleCrypto.name}</div>
-      <div>MARKET CAP RANK:{singleCrypto.market_cap_rank}</div>
-      <div>
-        MARKET CAP % CHANGE
-        {singleCrypto.market_data.market_cap_change_percentage_24h}%
+      <div className="single-crypto-card">
+        <div className="single-crypto-label">NAME</div>
+        <div className="single-crypto-name">{props.crypto.name}</div>
       </div>
-      <div>
-        CURRENT PRICE
-        {singleCrypto.market_data.current_price.usd} USD
-      </div>
-      <div>
-        HIGH(24hr)
-        {singleCrypto.market_data.high_24h.usd} USD
+      <div className="single-crypto-card">
+        <div className="single-crypto-label">Market Rank</div>
+        <div className="single-crypto-name">{props.crypto.market_cap_rank}</div>
       </div>
     </div>
   );
