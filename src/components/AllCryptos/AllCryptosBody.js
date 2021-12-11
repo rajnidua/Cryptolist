@@ -11,6 +11,9 @@ const AllCryptosBody = () => {
   const [allCryptos, setAllCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState([]);
+  const [cryptoPageNum, setCryptoPageNum] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const hideLoader = () => {
     setLoading(false);
@@ -18,6 +21,10 @@ const AllCryptosBody = () => {
 
   const showLoader = () => {
     setLoading(true);
+  };
+  const handlePageChange = (page) => {
+    console.log("the page change value is: ", page);
+    setCurrentPage(page);
   };
 
   const cryptosLength = Object.keys(allCryptos).length;
@@ -40,6 +47,8 @@ const AllCryptosBody = () => {
     }
   };
 
+  const cryptoPaginate = Paginate(allCryptos, currentPage, pageSize);
+
   useEffect(() => {
     getData();
   }, []);
@@ -54,11 +63,19 @@ const AllCryptosBody = () => {
           timeout={3000} //3 secs
         />
       ) : (
-        <ShowList
-          loading={loading}
-          setLoading={setLoading}
-          filteredList={allCryptos}
-        />
+        <div>
+          <ShowList
+            loading={loading}
+            setLoading={setLoading}
+            filteredList={cryptoPaginate}
+          />
+          <Pagination
+            itemsCount={cryptosLength}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </div>
       )}
     </div>
   );
