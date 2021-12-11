@@ -6,6 +6,8 @@ import SearchCryptoList from "./pages/SearchCryptoList";
 import TrendingCrypto from "./pages/TrendingCrypto";
 import Navbar from "./components/Navbar/Navbar";
 import SingleCrypto from "./pages/SingleCrypto";
+import AllCryptos from "./pages/AllCryptos";
+import FilterCryptos from "./pages/FilterCryptos";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route exact path="/" component={SearchCryptoList} />
           <Route exact path="/trendingCrypto" component={TrendingCrypto} />
           <Route exact path="/singleCrypto" component={SingleCrypto} />
+          <Route exact path="/allCryptos" component={AllCryptos} />
+          <Route exact path="/filterCryptos" component={FilterCryptos} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Switch>
       </>

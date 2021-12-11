@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Nav,
   NavLink,
@@ -9,6 +9,11 @@ import {
 } from "./NavbarElements";
 
 const Navbar = () => {
+  const [searchInput, setSearchInput] = useState();
+  /* const handleInputChange=(e)=>{
+setSearchInput(e.target.value);
+
+  } */
   return (
     <>
       <Nav>
@@ -22,11 +27,20 @@ const Navbar = () => {
             Trending
           </NavLink>
 
-          <NavLink to="/annual" activeStyle>
-            Annual Report
+          <NavLink to="/filterCryptos" activeStyle>
+            <input
+              name="searchInput"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              type="text"
+              size="lg"
+              data-testid="input-element"
+              placeholder="Search for a Cryptolist"
+            />
+            Search
           </NavLink>
-          <NavLink to="/team" activeStyle>
-            Teams
+          <NavLink to="/allCryptos" activeStyle>
+            All Cryptos
           </NavLink>
           <NavLink to="/blogs" activeStyle>
             Blogs
