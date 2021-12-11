@@ -18,16 +18,10 @@ const Navbar = () => {
           {/* <NavLink to="/abc" activeStyle>
             Search Crypto
           </NavLink> */}
-          <NavLink to="/trendingCrypto" activeStyle>
-            TRENDING
-          </NavLink>
+          <NavLink to="/trendingCrypto">TRENDING</NavLink>
 
-          <NavLink to="/" activeStyle>
-            SEARCH
-          </NavLink>
-          <NavLink to="/allCryptos" activeStyle>
-            ALL CRYPTOS
-          </NavLink>
+          <NavLink to="/">SEARCH</NavLink>
+          <NavLink to="/allCryptos">ALL CRYPTOS</NavLink>
         </NavMenu>
         <NavBtn>
           <NavBtnLink to="/signin">Sign In</NavBtnLink>

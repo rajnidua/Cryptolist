@@ -4,6 +4,8 @@ import ShowList from "../SearchCrypto/ShowList";
 import Loader from "react-loader-spinner";
 import _ from "lodash";
 import "../../styles/filterCryptos.css";
+import { faAddressBook, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FilterCryptosBody = (props) => {
   console.log("props from filter crypto body is ", props);
@@ -58,7 +60,7 @@ const FilterCryptosBody = (props) => {
           type="text"
           size="lg"
           data-testid="input-element"
-          placeholder="Search for a Crypto"
+          placeholder="Search"
           className="search-input"
         />
       </div>

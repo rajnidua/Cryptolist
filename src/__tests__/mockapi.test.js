@@ -1,4 +1,4 @@
-import { searchCryptoList } from "../utils/API";
+import { filterCryptoList } from "../utils/API";
 const axios = require("axios");
 
 jest.mock("axios");
@@ -36,7 +36,7 @@ it("returns the title of the first album", async () => {
     },
   ]);
 
-  const data = await searchCryptoList(1);
+  const data = await filterCryptoList(1);
   console.log("returned name is ", Object.values(data[0]));
   const resultValue = Object.values(data[0]);
   console.log("resultValue ", resultValue[19]);
