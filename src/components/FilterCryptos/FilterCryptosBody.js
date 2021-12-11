@@ -4,7 +4,11 @@ import ShowList from "../SearchCrypto/ShowList";
 import Loader from "react-loader-spinner";
 import _ from "lodash";
 import "../../styles/filterCryptos.css";
-import { faAddressBook, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressBook,
+  faAngleRight,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FilterCryptosBody = (props) => {
@@ -53,6 +57,7 @@ const FilterCryptosBody = (props) => {
   return (
     <div className="container">
       <div className="search-container">
+        <FontAwesomeIcon icon={faSearch} />
         <input
           name="searchInput"
           value={searchInput}
