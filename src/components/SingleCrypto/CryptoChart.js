@@ -1,106 +1,139 @@
-import React, { useState, useEffect } from "react";
-import { getDatasetAtEvent } from "react-chartjs-2";
-import { Chart } from "react-google-charts";
-import { searchChart } from "../../utils/API";
-import Loader from "react-loader-spinner";
+import axios from "axios";
+//import { CategoryScale } from "chart.js";
+import { useEffect, useState } from "react";
+import { getChart } from "../../utils/API";
+import { Line } from "react-chartjs-2";
+import {
+  CircularProgress,
+  createTheme,
+  makeStyles,
+  ThemeProvider,
+} from "@material-ui/core";
+import { chartDays } from "../../utils/data";
+import SelectButton from "../SelectButton";
 
-const CryptoChart = () => {
-  const [chartData, setChartData] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-  const [result, setResult] = useState({});
-  const [data, setData] = useState({ index: [], price: [], volumes: [] });
-  const hideLoader = () => {
-    setLoading(false);
-  };
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Chart } from "react-chartjs-2";
 
-  const showLoader = () => {
-    setLoading(true);
-  };
-  const getData = async () => {
-    showLoader();
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-    //let data = { index: [], price: [], volumes: [] };
+const CryptoChart = (props) => {
+  console.log("props from crypto chart ", props);
+  const [chartData, setChartData] = useState();
+  const [days, setDays] = useState(1);
+  const currency = "usd";
 
+  const useStyles = makeStyles((theme) => ({
+    container: {
+      width: "75%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 25,
+      padding: 40,
+      [theme.breakpoints.down("md")]: {
+        width: "100%",
+        marginTop: 0,
+        padding: 20,
+        paddingTop: 0,
+      },
+    },
+  }));
+
+  const classes = useStyles();
+
+  const fetchChartData = async () => {
     try {
-      const response = await searchChart();
-      setLoading(false);
-      hideLoader();
-      console.log(response.data);
-      //setChartData(response.data);
-      setResult(response.data);
-      console.log("The result response is: ", result);
-      //console.log("Object.keys is", Object.keys(result.prices));
-      //console.log("Object.values is", Object.values(result.prices));
+      const response = await getChart(props.crypto.id, days, currency);
 
-      //setData({ price: result.prices });
-      //console.log("result prices are:", data);
+      console.log("chart data is ", response.data);
+      setChartData(response.data.prices);
+
       if (response.status !== 200) {
-        setError(true);
+        throw new console.error("Something went wrong!");
       }
     } catch (err) {
       console.log(err);
     }
-    /*  for (const item of Object.keys(result.prices)) {
-      data.index.push(item[0]);
-      data.price.push(item[1]);
-    }
-    for (const item of result.total_volumes) data.volumes.push(item[1]); */
   };
-
+  console.log(chartData);
   useEffect(() => {
-    getData();
-  }, []);
+    fetchChartData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [days]);
   return (
-    <div>
-      <Chart
-        width={"600px"}
-        height={"400px"}
-        chartType="LineChart"
-        loader={<div>Loading Chart</div>}
-        data={[
-          ["x", "dogs"],
-          [0, 0],
-          [1, 10],
-          [2, 23],
-          [3, 17],
-          [4, 18],
-          [5, 9],
-          [6, 11],
-          [7, 27],
-          [8, 33],
-          [9, 40],
-          [10, 32],
-          [11, 35],
-        ]}
-        options={{
-          hAxis: {
-            title: "Time",
-          },
-          vAxis: {
-            title: "Popularity",
-          },
-        }}
-        rootProps={{ "data-testid": "1" }}
-      />
+    <div className={classes.container}>
+      {!chartData ? (
+        <CircularProgress style={{ color: "gold" }} size={250} thickness={1} />
+      ) : (
+        <>
+          <Line
+            data={{
+              labels: chartData.map((coin) => {
+                let date = new Date(coin[0]);
+                let time =
+                  date.getHours() > 12
+                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                    : `${date.getHours()}:${date.getMinutes()} AM`;
+                return days === 1 ? time : date.toLocaleDateString();
+              }),
+
+              datasets: [
+                {
+                  data: chartData.map((coin) => coin[1]),
+                  label: `Price ( Past ${days} Days ) in ${currency}`,
+                  borderColor: "#EEBC1D",
+                },
+              ],
+            }}
+            options={{
+              elements: {
+                point: {
+                  radius: 1,
+                },
+              },
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              marginTop: 20,
+              justifyContent: "space-around",
+              width: "100%",
+            }}
+          >
+            {chartDays.map((day) => (
+              <SelectButton
+                key={day.value}
+                onClick={() => setDays(day.value)}
+                selected={day.value === days}
+              >
+                {day.label}
+              </SelectButton>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
 export default CryptoChart;
-
-/* data={[
-          ["x", "dogs"],
-          [0, 0],
-          [1, 10],
-          [2, 23],
-          [3, 17],
-          [4, 18],
-          [5, 9],
-          [6, 11],
-          [7, 27],
-          [8, 33],
-          [9, 40],
-          [10, 32],
-          [11, 35],
-        ]} */

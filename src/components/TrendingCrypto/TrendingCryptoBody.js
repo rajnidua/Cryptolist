@@ -15,7 +15,7 @@ const TrendingCryptoBody = (props) => {
             <Link
               to={{
                 pathname: "/singleCrypto",
-                state: [coin.item.id],
+                state: [coin.item],
               }}
             >
               <img src={coin.item.thumb}></img>

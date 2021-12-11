@@ -1,0 +1,4 @@
+single-crypto-container {
+  display: flex;
+  flex-direction: column;
+}

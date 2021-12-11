@@ -4,12 +4,12 @@ import Header from "../components/Header/Header";
 import CryptoChart from "../components/SingleCrypto/CryptoChart.js";
 
 const SingleCryptoDetail = (props) => {
-  console.log("props from crypto detail page are ", props);
+  console.log("props from single crypto page are ", props);
 
   return (
     <div>
-      <SingleCryptoBody crypto={props.location.state} />
-      <CryptoChart />
+      <SingleCryptoBody crypto={props.location.state[0]} />
+      <CryptoChart crypto={props.location.state[0]} />
     </div>
   );
 };

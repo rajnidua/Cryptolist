@@ -5,7 +5,7 @@
   align-items: center;
   max-width: 100%;
   height: 100vh;
-  background-color: #e0a5db;
+  background-color: #bea5ae;
 }
 
 .card-section {
@@ -18,7 +18,7 @@
   flex: 1 1 160px;
 }
 .container-find-trending {
-  background-color: #e0a5db;
+  background-color: #bea5ae;
 }
 
 h1 {
@@ -44,9 +44,10 @@ h1 {
   padding-right: 5px;
   font-weight: bold;
   cursor: pointer;
+  background-color: #637795;
 }
 
 .btn-trending:hover {
   transition: ease-in;
-  background-color: #e0a5db;
+  background-color: #bea5ae;
 }
