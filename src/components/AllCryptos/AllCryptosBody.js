@@ -56,13 +56,15 @@ const AllCryptosBody = () => {
   return (
     <div>
       {loading ? (
-        <Loader
-          type="Puff"
-          color="#00BFFF"
-          height={100}
-          width={100}
-          timeout={3000} //3 secs
-        />
+        <div className="show-loader">
+          <Loader
+            type="Puff"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        </div>
       ) : (
         <div>
           <ShowList
@@ -80,19 +82,21 @@ const AllCryptosBody = () => {
       )}
 
       {cryptoPageNum <= 4 ? (
-        <button
-          onClick={getData}
-          className="btn-new-page"
-          data-testid="next-page"
-        >
-          <p>
-            {cryptoPageNum === 1 ? (
-              <span>LOAD FROM BEGINNING</span>
-            ) : (
-              <span>LOAD NEXT 100 RECORDS</span>
-            )}
-          </p>
-        </button>
+        <div className="load-next-records">
+          <button
+            onClick={getData}
+            className="btn-new-page"
+            data-testid="next-page"
+          >
+            <p>
+              {cryptoPageNum === 1 ? (
+                <span>LOAD FROM BEGINNING</span>
+              ) : (
+                <span>LOAD NEXT 100 RECORDS</span>
+              )}
+            </p>
+          </button>
+        </div>
       ) : (
         <div>{setCryptoPageNum(1)}</div>
       )}

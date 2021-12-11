@@ -22,6 +22,7 @@ const TrendingCryptoBody = (props) => {
             </Link>
             <div>{coin.item.symbol.toUpperCase()}</div>
             <div>{coin.item.name.toUpperCase()}</div>
+            <button className="btn-trending">VIEW</button>
           </div>
         ))}
       </div>

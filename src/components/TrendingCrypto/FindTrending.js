@@ -3,6 +3,7 @@ import ShowList from "../SearchCrypto/ShowList";
 import axios from "axios";
 import TrendingCryptoBody from "./TrendingCryptoBody";
 import { searchTrendingList } from "../../utils/API";
+import "../../styles/trendingCrypto.css";
 
 const FindTrending = () => {
   //const [trendingCryptoList, setTrendingCryptoList] = useState([]);
@@ -41,7 +42,7 @@ const FindTrending = () => {
     trendingCryptoList();
   }, []);
   return (
-    <div>
+    <div className="container-find-trending">
       {loading || !cryptosLength ? (
         <div>loading</div>
       ) : (

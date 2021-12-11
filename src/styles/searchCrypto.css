@@ -4,11 +4,27 @@
 }
 
 .btn-new-page {
-  background-color: #89b589;
-  padding: 10px;
+  background-color: #e0a5db;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn-new-page:hover {
+  transition: ease-in-out;
+  background-color: #d6d8da;
+  cursor: pointer;
 }
 
 .show-loader {
   text-align: center;
   margin-top: 100px;
+}
+.load-next-records {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 5px inset;
 }
