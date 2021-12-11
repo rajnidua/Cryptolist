@@ -3,7 +3,7 @@ const axios = require("axios");
 
 jest.mock("axios");
 
-it("returns the title of the first album", async () => {
+it("returns the name of the crypto currency", async () => {
   axios.get.mockResolvedValue([
     {
       ath: 69045,
@@ -35,14 +35,15 @@ it("returns the title of the first album", async () => {
       total_volume: 27773840811,
     },
   ]);
-
+  //expect.assertions(1);
   const data = await filterCryptoList(1);
+  //setLoading(false);
   console.log("returned name is ", Object.values(data[0]));
   const resultValue = Object.values(data[0]);
   console.log("resultValue ", resultValue[19]);
   const returnedName = resultValue[19];
   expect(axios.get).toHaveBeenCalledTimes(1);
   console.log("axios.get return >>", axios.get.mock.results[0]);
-  //console.log("axios.get value data >>", axios.get.mock.results.value);
+
   expect(returnedName).toEqual("Bitcoin");
 });
