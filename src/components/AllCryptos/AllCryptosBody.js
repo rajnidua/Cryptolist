@@ -10,7 +10,7 @@ import "../../styles/searchCrypto.css";
 const AllCryptosBody = () => {
   const [allCryptos, setAllCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(false);
   const [cryptoPageNum, setCryptoPageNum] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);

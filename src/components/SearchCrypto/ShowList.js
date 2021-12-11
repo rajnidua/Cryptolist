@@ -7,10 +7,10 @@ const ShowList = (props) => {
   console.log(props);
   return (
     <div className="crypto-container">
-      <div className="crypto-row">
-        <h3>Name</h3>
-        <h3>Change(24hr)</h3>
-        <h3>Price</h3>
+      <div className="crypto-row first">
+        <h4 className="first-col">Name</h4>
+        <h4>Change(24hr)</h4>
+        <h4>Price</h4>
       </div>
       {props.filteredList.map((crypto) => (
         <div className="crypto-row" key={crypto.id}>

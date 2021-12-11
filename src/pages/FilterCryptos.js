@@ -1,10 +1,10 @@
 import React from "react";
 import FilterCryptosBody from "../components/FilterCryptos/FilterCryptosBody";
 
-const FilterCryptoList = () => {
+const FilterCryptoList = (props) => {
   return (
     <div>
-      <FilterCryptosBody />
+      <FilterCryptosBody inputValue={props.location} />
     </div>
   );
 };
