@@ -56,3 +56,22 @@ img {
 .title {
   font-weight: bold;
 }
+
+.btn-img:hover {
+  cursor: pointer;
+}
+
+.btn-buy {
+  background-color: #d37fcc;
+  max-width: 100px;
+  font-weight: bold;
+}
+
+.btn-buy:hover {
+  height: 30px;
+  cursor: pointer;
+}
+
+.btn-buy-title {
+  max-width: 100px;
+}

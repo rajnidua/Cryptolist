@@ -8,10 +8,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  margin-top: -10px;
 }
 
 .search-input {
-  background-color: #d6d8da;
+  background-color: #ffffff;
   height: 40px;
   border-radius: 5%;
   min-width: 250px;

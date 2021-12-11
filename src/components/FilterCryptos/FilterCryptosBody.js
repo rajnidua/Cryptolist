@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { searchCryptoList } from "../../utils/API";
+import { filterCryptoList } from "../../utils/API";
 import ShowList from "../SearchCrypto/ShowList";
 import Loader from "react-loader-spinner";
 import _ from "lodash";
@@ -24,7 +24,7 @@ const FilterCryptosBody = (props) => {
     showLoader();
 
     try {
-      const response = await searchCryptoList(1);
+      const response = await filterCryptoList(1);
       setLoading(false);
       hideLoader();
       console.log(response.data);
