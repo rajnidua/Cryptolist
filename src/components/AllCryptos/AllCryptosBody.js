@@ -33,7 +33,7 @@ const AllCryptosBody = () => {
     showLoader();
     //setCryptoPageNum(1);
     try {
-      const response = await searchCryptoList(1);
+      const response = await searchCryptoList(cryptoPageNum);
       setLoading(false);
       hideLoader();
       console.log(response.data);
@@ -45,6 +45,7 @@ const AllCryptosBody = () => {
     } catch (err) {
       console.log(err);
     }
+    setCryptoPageNum(cryptoPageNum + 1);
   };
 
   const cryptoPaginate = Paginate(allCryptos, currentPage, pageSize);
@@ -76,6 +77,24 @@ const AllCryptosBody = () => {
             onPageChange={handlePageChange}
           />
         </div>
+      )}
+
+      {cryptoPageNum <= 4 ? (
+        <button
+          onClick={getData}
+          className="btn-new-page"
+          data-testid="next-page"
+        >
+          <p>
+            {cryptoPageNum === 1 ? (
+              <span>LOAD FROM BEGINNING</span>
+            ) : (
+              <span>LOAD NEXT 100 RECORDS</span>
+            )}
+          </p>
+        </button>
+      ) : (
+        <div>{setCryptoPageNum(1)}</div>
       )}
     </div>
   );
