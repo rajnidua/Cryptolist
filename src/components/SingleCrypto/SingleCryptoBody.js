@@ -11,7 +11,7 @@ const SingleCryptoBody = (props) => {
 
   const [singleCrypto, setSingleCrypto] = useState();
   useEffect(() => {
-    getSingleCrypto(props.crypto.id).then((items) => {
+    getSingleCrypto(props.crypto).then((items) => {
       console.log("Line 38 items data is --->", items.data);
       console.log("Assigning the value for setSingleCrypto");
       setSingleCrypto(items.data);
@@ -49,11 +49,13 @@ const SingleCryptoBody = (props) => {
         isLoading
       ) : (
         <div className="main-info-container">
-          <div className=" title-container">
-            <div className="title">
-              <img src={props.crypto.large}></img>
+          <div className=" title-crypto-container">
+            <div className="title-info">
+              {/* <img src={props.crypto.large}></img> */}
+              <img src={singleCrypto.image.large}></img>
 
-              <span className="title">{props.crypto.name}</span>
+              {/* <span className="title">{props.crypto.name}</span> */}
+              <span className="title">{singleCrypto.name}</span>
             </div>
           </div>
           <div className="info-container">
@@ -62,7 +64,7 @@ const SingleCryptoBody = (props) => {
                 <tbody>
                   <tr className="table-row">
                     <th scope="row">Market Rank</th>
-                    <td>{props.crypto.market_cap_rank}</td>
+                    <td>{singleCrypto.market_cap_rank}</td>
                   </tr>
                   <tr className="table-row">
                     <th scope="row">Supply</th>

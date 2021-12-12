@@ -55,10 +55,10 @@ table {
 table tbody tr {
   border-bottom: 2px solid gray;
 }
-.title-container {
+.title-crypto-container {
   display: inline;
 }
-.title {
+.title-info {
   color: #0096ff;
   font-size: 35px;
   padding-left: 5px;

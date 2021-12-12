@@ -62,7 +62,7 @@ const CryptoChart = (props) => {
 
   const fetchChartData = async () => {
     try {
-      const response = await getChart(props.crypto.id, days, currency);
+      const response = await getChart(props.crypto, days, currency);
 
       console.log("chart data is ", response.data);
       setChartData(response.data.prices);

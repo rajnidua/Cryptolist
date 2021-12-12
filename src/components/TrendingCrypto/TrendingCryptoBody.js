@@ -15,11 +15,19 @@ const TrendingCryptoBody = (props) => {
             <Link
               to={{
                 pathname: "/singleCrypto",
-                state: [coin.item],
+                state: [coin.item.id],
               }}
             >
               <img src={coin.item.thumb}></img>
             </Link>
+            {/* <Link
+              to={{
+                pathname: "/singleCrypto",
+                state: [coin.item],
+              }}
+            >
+              <img src={coin.item.thumb}></img>
+            </Link> */}
             <div>{coin.item.symbol.toUpperCase()}</div>
             <div>{coin.item.name.toUpperCase()}</div>
             <button className="btn-trending">VIEW</button>

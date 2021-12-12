@@ -22,12 +22,21 @@ const ShowList = (props) => {
               <Link
                 to={{
                   pathname: "/singleCrypto",
-                  state: [crypto.id],
+                  state: [crypto],
                 }}
                 className="btn-img"
               >
                 <img src={crypto.image} alt="image" />
               </Link>
+              {/*  <Link
+                to={{
+                  pathname: "/singleCrypto",
+                  state: [props],
+                }}
+                className="btn-img"
+              >
+                <img src={crypto.image} alt="image" />
+              </Link> */}
             </div>
             <div className="name-section">
               <div className="title">{crypto.name}</div>
@@ -55,6 +64,15 @@ const ShowList = (props) => {
           <div className="volume">{crypto.total_volume}</div>
           <button className="btn-buy">
             VIEW {crypto.symbol.toUpperCase()}
+            {/* <Link
+              to={{
+                pathname: "/singleCrypto",
+                state: [crypto.id],
+              }}
+              className="btn-img"
+            >
+              VIEW {crypto.symbol.toUpperCase()}
+            </Link> */}
           </button>
         </div>
       ))}
