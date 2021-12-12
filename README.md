@@ -59,9 +59,11 @@ Then I select from the buttons on the bottom of the chart from 24hr,30days,3 mon
 
 ## Deployed App Link
 
+https://rajnidua.github.io/Cryptolist/
+
 ## Video
 
-[![Watch Video](https://drive.google.com/file/d/1aMw43EibaCnoTK0Bvcs3l-OcCfWsm-3F/view?usp=sharing)]
+(https://drive.google.com/file/d/1aMw43EibaCnoTK0Bvcs3l-OcCfWsm-3F/view?usp=sharing)
 
 ## Screenshot
 
@@ -131,8 +133,22 @@ Coingechko API: https://www.coingecko.com/en/api/documentation
 ## Run
 
 On Localhost : npm start
+On gh-pages : npm run deploy
 
 ## Deployment
+
+This project is deployed at gh-pages
+Link: https://create-react-app.dev/docs/deployment/#github-pages
+
+Steps:
+
+```md
+git status
+git add -A
+git commit -m "changes"
+git push origin main
+npm run deploy
+```
 
 ## Testing
 
