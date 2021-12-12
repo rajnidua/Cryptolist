@@ -28,15 +28,6 @@ const ShowList = (props) => {
               >
                 <img src={crypto.image} alt="image" />
               </Link>
-              {/*  <Link
-                to={{
-                  pathname: "/singleCrypto",
-                  state: [props],
-                }}
-                className="btn-img"
-              >
-                <img src={crypto.image} alt="image" />
-              </Link> */}
             </div>
             <div className="name-section">
               <div className="title">{crypto.name}</div>

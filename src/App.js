@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SearchCryptoList from "./pages/SearchCryptoList";
+
 import TrendingCrypto from "./pages/TrendingCrypto";
 import Navbar from "./components/Navbar/Navbar";
 import SingleCrypto from "./pages/SingleCrypto";
@@ -15,7 +15,6 @@ function App() {
       <>
         <Navbar />
         <Switch>
-          <Route exact path="/abc" component={SearchCryptoList} />
           <Route exact path="/trendingCrypto" component={TrendingCrypto} />
           <Route exact path="/singleCrypto" component={SingleCrypto} />
           <Route exact path="/allCryptos" component={AllCryptos} />

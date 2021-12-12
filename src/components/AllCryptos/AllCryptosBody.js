@@ -23,7 +23,6 @@ const AllCryptosBody = () => {
     setLoading(true);
   };
   const handlePageChange = (page) => {
-    console.log("the page change value is: ", page);
     setCurrentPage(page);
   };
 
@@ -31,12 +30,12 @@ const AllCryptosBody = () => {
 
   const getData = async () => {
     showLoader();
-    //setCryptoPageNum(1);
+
     try {
       const response = await searchCryptoList(cryptoPageNum);
       setLoading(false);
       hideLoader();
-      console.log(response.data);
+
       setAllCryptos(response.data);
 
       if (response.status !== 200) {
