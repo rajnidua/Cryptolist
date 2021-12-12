@@ -8,6 +8,9 @@ const SingleCryptoBody = (props) => {
   const [singleCrypto, setSingleCrypto] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [runUseEffect, setRunUseEffect] = useState(true);
+  const [responseArray, setResponseArray] = useState([]);
+  // const [coin, setCoin] = useState(null);
 
   const hideLoader = () => {
     setLoading(false);
@@ -22,10 +25,11 @@ const SingleCryptoBody = (props) => {
     console.log("I am inside single crypto");
     try {
       const response = await getSingleCrypto(props.crypto.id);
-      setLoading(false);
+      //setLoading(false);
       hideLoader();
-
-      console.log("trendinglist is ", response.data);
+      setResponseArray(response.data);
+      console.log("+++++++++++++++++++");
+      //console.log("*************trendinglist is ", response.data);
       setSingleCrypto(response.data);
 
       if (response.status !== 200) {
@@ -35,12 +39,20 @@ const SingleCryptoBody = (props) => {
       console.log(err);
     }
   };
+  console.log("Single Crypto is :---", singleCrypto);
+  console.log("Single Crypto is :---", singleCrypto.description);
+  const descData = singleCrypto.description;
+  console.log("!!!!!!!!!!Desc data is ", descData);
+  //console.log("%%%%%%%%%Desc data is ", descData.en);
 
   useEffect(() => {
     getData();
   }, []);
+
+  //if (coin === null) return <div>Loading screen</div>;
   return (
     <div className="single-crypto-container">
+      {getData}
       <img src={props.crypto.large}></img>
       <div className="single-crypto-card">
         <div className="single-crypto-label">NAME</div>
@@ -49,6 +61,23 @@ const SingleCryptoBody = (props) => {
       <div className="single-crypto-card">
         <div className="single-crypto-label">Market Rank</div>
         <div className="single-crypto-name">{props.crypto.market_cap_rank}</div>
+      </div>
+
+      <div className="single-crypto-card">
+        <div className="single-crypto-label">Description</div>
+        {/* <div className="single-crypto-name">
+          {singleCrypto.description ? (
+            singleCrypto.description.map((item, index) => (
+              <div className="items" key={index}>
+                <div className="text-center">
+                  <p className="fs-12">{item}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No Description</p>
+          )}
+        </div> */}
       </div>
     </div>
   );
