@@ -61,7 +61,7 @@ Then I select from the buttons on the bottom of the chart from 24hr,30days,3 mon
 
 ## Video
 
-![Watch Video](https://drive.google.com/file/d/1aMw43EibaCnoTK0Bvcs3l-OcCfWsm-3F/view?usp=sharing)
+[![Watch Video](https://drive.google.com/file/d/1aMw43EibaCnoTK0Bvcs3l-OcCfWsm-3F/view?usp=sharing)]
 
 ## Screenshot
 
