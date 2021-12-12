@@ -44,42 +44,133 @@ const SingleCryptoBody = (props) => {
   console.log("Linte item 56 : Market Data  is :---", singleCrypto.market_data);
 
   return (
-    <div className="single-crypto-container">
+    <div>
       {isLoading ? (
         isLoading
       ) : (
-        <div>
-          {" "}
-          <img src={props.crypto.large}></img>
-          <div className="single-crypto-card">
-            <div className="single-crypto-label">NAME</div>
-            <div className="single-crypto-name">{props.crypto.name}</div>
-          </div>
-          <div className="single-crypto-card">
-            <div className="single-crypto-label">Market Rank</div>
-            <div className="single-crypto-name">
-              {props.crypto.market_cap_rank}
+        <div className="main-info-container">
+          <div className=" title-container">
+            <div className="title">
+              <img src={props.crypto.large}></img>
+
+              <span className="title">{props.crypto.name}</span>
             </div>
           </div>
-          <div>Supply : {singleCrypto.market_data.total_supply.usd}</div>
-          <div>
-            Current Price: ${singleCrypto.market_data.current_price.usd}
-          </div>
-          <div>Market Cap: {singleCrypto.market_data.market_cap.usd}</div>
-          <div>Volume: {singleCrypto.market_data.total_volume.usd}</div>
-          <div>High 24h: ${singleCrypto.market_data.high_24h.usd}</div>
-          <div>Low 24h: ${singleCrypto.market_data.low_24h.usd}</div>
-          <div>
-            Price Change 24h: $
-            {singleCrypto.market_data.price_change_24h_in_currency.usd} (%:{" "}
-            {
-              singleCrypto.market_data.price_change_percentage_24h_in_currency
-                .usd
-            }
-            )
-          </div>
-          <div>
-            What is {props.crypto.name}? {singleCrypto.description.en}{" "}
+          <div className="info-container">
+            <div className="single-crypto-container crypto-table">
+              <table>
+                <tbody>
+                  <tr className="table-row">
+                    <th scope="row">Market Rank</th>
+                    <td>{props.crypto.market_cap_rank}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Supply</th>
+                    <td>{singleCrypto.market_data.total_supply.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Current Price</th>
+                    <td>{singleCrypto.market_data.current_price.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Market Cap</th>
+                    <td>{singleCrypto.market_data.market_cap.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Volume</th>
+                    <td> {singleCrypto.market_data.total_volume.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">High(24h)</th>
+                    <td>{singleCrypto.market_data.total_volume.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Low(24h)</th>
+                    <td> {singleCrypto.market_data.low_24h.usd}</td>
+                  </tr>
+                  <tr className="table-row">
+                    <th scope="row">Price Change(24h)</th>
+                    <td>
+                      $
+                      {
+                        singleCrypto.market_data.price_change_24h_in_currency
+                          .usd
+                      }{" "}
+                      (%:{" "}
+                      {
+                        singleCrypto.market_data
+                          .price_change_percentage_24h_in_currency.usd
+                      }
+                      )
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/*  <div className="single-crypto-container">
+              <div className="left">
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Market Rank</div>
+                  <div className="single-crypto-name">
+                    {props.crypto.market_cap_rank}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Supply</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.total_supply.usd}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Current Price</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.current_price.usd}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Market Cap</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.market_cap.usd}
+                  </div>
+                </div>
+              </div>
+              <div className="right">
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Volume</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.total_volume.usd}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">High(24h)</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.total_volume.usd}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Low(24h)</div>
+                  <div className="single-crypto-name">
+                    {singleCrypto.market_data.low_24h.usd}
+                  </div>
+                </div>
+                <div className="single-crypto-card">
+                  <div className="single-crypto-label">Price Change(24h)</div>
+                  <div className="single-crypto-name">
+                    ${singleCrypto.market_data.price_change_24h_in_currency.usd}{" "}
+                    (%:{" "}
+                    {
+                      singleCrypto.market_data
+                        .price_change_percentage_24h_in_currency.usd
+                    }
+                    )
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            <div className="single-crypto-container desc">
+              {singleCrypto.description.en}{" "}
+            </div>
           </div>
         </div>
       )}

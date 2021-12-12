@@ -1,18 +1,78 @@
-.container {
+/* .single-crypto-container {
   background-color: #d6d8da;
+  display: flex;
+  flex-direction: row;
+} */
+
+.main-info-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .single-crypto-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  padding: 5px;
 
   font-size: 30px;
+  /* border: 2px solid black; */
+}
+.info-container {
+  display: flex;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 50px;
+  flex-direction: column;
+}
+
+table .table-row {
+  background-color: #ffb480;
+  font-size: 22px;
+
+  color: white;
+  text-transform: uppercase;
+}
+
+table th {
+  font-size: 18px;
+}
+/* thead {
+  float: left;
+}
+
+thead th {
+  display: block;
+}
+
+tbody {
+  float: right;
+} */
+
+table {
+  border: 2px solid #0096ff;
+}
+table tbody tr {
+  border-bottom: 2px solid gray;
+}
+.title-container {
+  display: inline;
+}
+.title {
+  color: #0096ff;
+  font-size: 35px;
+  padding-left: 5px;
+}
+
+.desc {
+  font-size: 24px;
 }
 
 .single-crypto-card {
   margin: 20px;
   padding: 5px;
   background-color: lightgray;
+  max-width: 150px;
 }
 .single-crypto-label {
   font-size: 20px;
