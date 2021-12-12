@@ -2,99 +2,88 @@ import React, { useState, useEffect } from "react";
 import { getDatasetAtEvent } from "react-chartjs-2";
 import { getSingleCrypto } from "../../utils/API";
 import "../../styles/singleCrypto.css";
+import Loader from "react-loader-spinner";
 
 const SingleCryptoBody = (props) => {
   console.log("props for single crypto", props);
-  const [singleCrypto, setSingleCrypto] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [runUseEffect, setRunUseEffect] = useState(true);
-  const [responseArray, setResponseArray] = useState([]);
-  // const [coin, setCoin] = useState(null);
 
-  const hideLoader = () => {
-    setLoading(false);
-  };
+  const [isLoading, setLoading] = useState(true);
 
-  const showLoader = () => {
-    setLoading(true);
-  };
-
-  const getData = async () => {
-    showLoader();
-    console.log("I am inside single crypto");
-    try {
-      const response = await getSingleCrypto(props.crypto.id);
-      //setLoading(false);
-      hideLoader();
-      setResponseArray(response.data);
-      console.log("+++++++++++++++++++");
-      //console.log("*************trendinglist is ", response.data);
-      setSingleCrypto(response.data);
-
-      if (response.status !== 200) {
-        setError(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log("Single Crypto is :---", singleCrypto);
-  console.log("Single Crypto is :---", singleCrypto.description);
-  const descData = singleCrypto.description;
-  console.log("!!!!!!!!!!Desc data is ", descData);
-  //console.log("%%%%%%%%%Desc data is ", descData.en);
-
+  const [singleCrypto, setSingleCrypto] = useState();
   useEffect(() => {
-    getData();
+    getSingleCrypto(props.crypto.id).then((items) => {
+      console.log("Line 38 items data is --->", items.data);
+      console.log("Assigning the value for setSingleCrypto");
+      setSingleCrypto(items.data);
+      // let singleCrypto = items.data;
+
+      setLoading(false);
+    });
   }, []);
 
-  //if (coin === null) return <div>Loading screen</div>;
+  if (isLoading) {
+    return (
+      <div className="show-loader">
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      </div>
+    );
+  }
+
+  console.log("Single Crypto is :---", singleCrypto);
+
+  console.log(
+    "Linte item 55 : Single Crypto description is :---",
+    singleCrypto.description.en
+  );
+  console.log("Linte item 56 : Market Data  is :---", singleCrypto.market_data);
+
   return (
     <div className="single-crypto-container">
-      {getData}
-      <img src={props.crypto.large}></img>
-      <div className="single-crypto-card">
-        <div className="single-crypto-label">NAME</div>
-        <div className="single-crypto-name">{props.crypto.name}</div>
-      </div>
-      <div className="single-crypto-card">
-        <div className="single-crypto-label">Market Rank</div>
-        <div className="single-crypto-name">{props.crypto.market_cap_rank}</div>
-      </div>
-
-      <div className="single-crypto-card">
-        <div className="single-crypto-label">Description</div>
-        {/* <div className="single-crypto-name">
-          {singleCrypto.description ? (
-            singleCrypto.description.map((item, index) => (
-              <div className="items" key={index}>
-                <div className="text-center">
-                  <p className="fs-12">{item}</p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No Description</p>
-          )}
-        </div> */}
-      </div>
+      {isLoading ? (
+        isLoading
+      ) : (
+        <div>
+          {" "}
+          <img src={props.crypto.large}></img>
+          <div className="single-crypto-card">
+            <div className="single-crypto-label">NAME</div>
+            <div className="single-crypto-name">{props.crypto.name}</div>
+          </div>
+          <div className="single-crypto-card">
+            <div className="single-crypto-label">Market Rank</div>
+            <div className="single-crypto-name">
+              {props.crypto.market_cap_rank}
+            </div>
+          </div>
+          <div>Supply : {singleCrypto.market_data.total_supply.usd}</div>
+          <div>
+            Current Price: ${singleCrypto.market_data.current_price.usd}
+          </div>
+          <div>Market Cap: {singleCrypto.market_data.market_cap.usd}</div>
+          <div>Volume: {singleCrypto.market_data.total_volume.usd}</div>
+          <div>High 24h: ${singleCrypto.market_data.high_24h.usd}</div>
+          <div>Low 24h: ${singleCrypto.market_data.low_24h.usd}</div>
+          <div>
+            Price Change 24h: $
+            {singleCrypto.market_data.price_change_24h_in_currency.usd} (%:{" "}
+            {
+              singleCrypto.market_data.price_change_percentage_24h_in_currency
+                .usd
+            }
+            )
+          </div>
+          <div>
+            What is {props.crypto.name}? {singleCrypto.description.en}{" "}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 export default SingleCryptoBody;
-
-{
-  /* <div>
-        MARKET CAP % CHANGE
-        {singleCrypto.market_data.market_cap_change_percentage_24h}
-      </div>
-      <div>
-        CURRENT PRICE
-        {singleCrypto.market_data.current_price.usd}
-      </div>
-      <div>
-        HIGH(24hr)
-        {singleCrypto.market_data.high_24h.usd}
-      </div> */
-}
