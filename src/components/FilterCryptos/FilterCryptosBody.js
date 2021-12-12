@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const FilterCryptosBody = (props) => {
   const [searchInput, setSearchInput] = useState("");
   const [cryptos, setCryptos] = useState([]);
-  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const hideLoader = () => {
@@ -36,10 +36,11 @@ const FilterCryptosBody = (props) => {
       setCryptos(response.data);
 
       if (response.status !== 200) {
-        setError(true);
+        setErrorMessage(true);
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setErrorMessage(true);
     }
   };
 
@@ -52,6 +53,10 @@ const FilterCryptosBody = (props) => {
   useEffect(() => {
     getData();
   }, []);
+
+  if (errorMessage) {
+    return <h1>Something went wrong!! Try Again!!</h1>;
+  }
 
   return (
     <div className="container">

@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/singleCrypto" component={SingleCrypto} />
           <Route exact path="/allCryptos" component={AllCryptos} />
           <Route exact path="/" component={FilterCryptos} />
+          <Route exact path="/cryptolist" component={FilterCryptos} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Switch>
       </>

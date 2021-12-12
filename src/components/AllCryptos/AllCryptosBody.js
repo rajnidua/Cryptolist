@@ -10,7 +10,7 @@ import "../../styles/searchCrypto.css";
 const AllCryptosBody = () => {
   const [allCryptos, setAllCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [cryptoPageNum, setCryptoPageNum] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -39,7 +39,7 @@ const AllCryptosBody = () => {
       setAllCryptos(response.data);
 
       if (response.status !== 200) {
-        setError(true);
+        setErrorMessage(true);
       }
     } catch (err) {
       console.log(err);
@@ -52,6 +52,11 @@ const AllCryptosBody = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  if (errorMessage) {
+    return <h1>Something went wrong!! Try Again!!</h1>;
+  }
+
   return (
     <div>
       {loading ? (

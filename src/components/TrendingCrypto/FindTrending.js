@@ -9,7 +9,7 @@ const FindTrending = () => {
   //const [trendingCryptoList, setTrendingCryptoList] = useState([]);
   const [cryptos, setCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const hideLoader = () => {
     setLoading(false);
@@ -30,9 +30,10 @@ const FindTrending = () => {
       setCryptos(response.data);
 
       if (response.status !== 200) {
-        setError(true);
+        setErrorMessage(true);
       }
     } catch (err) {
+      setErrorMessage(true);
       console.log(err);
     }
   };
@@ -40,6 +41,11 @@ const FindTrending = () => {
   useEffect(() => {
     trendingCryptoList();
   }, []);
+
+  if (errorMessage) {
+    return <h1>Something went wrong!! Try Again!!</h1>;
+  }
+
   return (
     <div className="container-find-trending">
       {loading || !cryptosLength ? (

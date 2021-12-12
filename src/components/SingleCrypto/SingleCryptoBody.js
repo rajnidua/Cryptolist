@@ -6,6 +6,7 @@ import Loader from "react-loader-spinner";
 
 const SingleCryptoBody = (props) => {
   const [isLoading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const [singleCrypto, setSingleCrypto] = useState();
   useEffect(() => {
@@ -33,6 +34,10 @@ const SingleCryptoBody = (props) => {
   }
 
   console.log("Single Crypto is :---", singleCrypto);
+
+  if (errorMessage) {
+    return <h1>Something went wrong!! Try Again!!</h1>;
+  }
 
   return (
     <div>
