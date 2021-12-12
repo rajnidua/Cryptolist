@@ -62,18 +62,17 @@ const ShowList = (props) => {
           <div className="current-price">${crypto.current_price}</div>
           <div className="volume">{crypto.price_change_percentage_24h}</div>
           <div className="volume">{crypto.total_volume}</div>
-          <button className="btn-buy">
-            VIEW {crypto.symbol.toUpperCase()}
-            {/* <Link
-              to={{
-                pathname: "/singleCrypto",
-                state: [crypto.id],
-              }}
-              className="btn-img"
-            >
+          <Link
+            to={{
+              pathname: "/singleCrypto",
+              state: [crypto.id],
+            }}
+            className="btn-img"
+          >
+            <button className="btn-buy">
               VIEW {crypto.symbol.toUpperCase()}
-            </Link> */}
-          </button>
+            </button>
+          </Link>
         </div>
       ))}
     </div>
