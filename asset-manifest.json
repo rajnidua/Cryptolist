@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Cryptolist/static/css/main.1501736b.chunk.css",
-    "main.js": "/Cryptolist/static/js/main.1c46b786.chunk.js",
-    "main.js.map": "/Cryptolist/static/js/main.1c46b786.chunk.js.map",
+    "main.js": "/Cryptolist/static/js/main.dc71d7c5.chunk.js",
+    "main.js.map": "/Cryptolist/static/js/main.dc71d7c5.chunk.js.map",
     "runtime-main.js": "/Cryptolist/static/js/runtime-main.b0b7ee70.js",
     "runtime-main.js.map": "/Cryptolist/static/js/runtime-main.b0b7ee70.js.map",
     "static/js/2.e47af755.chunk.js": "/Cryptolist/static/js/2.e47af755.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b0b7ee70.js",
     "static/js/2.e47af755.chunk.js",
     "static/css/main.1501736b.chunk.css",
-    "static/js/main.1c46b786.chunk.js"
+    "static/js/main.dc71d7c5.chunk.js"
   ]
 }
