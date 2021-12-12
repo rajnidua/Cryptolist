@@ -14,6 +14,7 @@ It allows user to search for a crypto currency, see upto 400 crypto currencies,t
 - [Deployment](#Deployment)
 - [API Integration](#API)
 - [How to Run](#Run)
+- [Testing](#Testing)
 - [Contributing](#Contributing)
 - [Questions](#Questions)
 - [License](#License)
@@ -76,10 +77,6 @@ https://rajnidua.github.io/Cryptolist/
 ## Screenshot
 
 [![Screenshot](./src/images/Screenshot3.gif)]
-
-## Screenshot
-
-[![Screenshot](./images/CoachPlusScreenshot4.gif)]
 
 ## Installation
 
@@ -153,6 +150,7 @@ npm run deploy
 ## Testing
 
 jest for unit testing
+[![Screenshot](./src/images/Screenshot_test.png)]
 
 ## Contributing
 
