@@ -4,7 +4,6 @@ import SingleCryptoBody from "../SingleCrypto/SingleCryptoBody";
 import { Link } from "react-router-dom";
 
 const ShowList = (props) => {
-  console.log(props);
   return (
     <div className="crypto-container">
       <div className="crypto-row first">

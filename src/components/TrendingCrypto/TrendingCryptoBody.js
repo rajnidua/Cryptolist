@@ -3,8 +3,6 @@ import "../../styles/trendingCrypto.css";
 import { Link } from "react-router-dom";
 
 const TrendingCryptoBody = (props) => {
-  console.log(props);
-  console.log("my trend", props.trendingList.coins[0].item.id);
   return (
     <div className="container-trending">
       <h1>Top 7 Trending Cryptos</h1>

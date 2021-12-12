@@ -5,8 +5,6 @@ import "../../styles/singleCrypto.css";
 import Loader from "react-loader-spinner";
 
 const SingleCryptoBody = (props) => {
-  console.log("props for single crypto", props);
-
   const [isLoading, setLoading] = useState(true);
 
   const [singleCrypto, setSingleCrypto] = useState();
@@ -15,7 +13,6 @@ const SingleCryptoBody = (props) => {
       console.log("Line 38 items data is --->", items.data);
       console.log("Assigning the value for setSingleCrypto");
       setSingleCrypto(items.data);
-      // let singleCrypto = items.data;
 
       setLoading(false);
     });
@@ -36,12 +33,6 @@ const SingleCryptoBody = (props) => {
   }
 
   console.log("Single Crypto is :---", singleCrypto);
-
-  console.log(
-    "Linte item 55 : Single Crypto description is :---",
-    singleCrypto.description.en
-  );
-  console.log("Linte item 56 : Market Data  is :---", singleCrypto.market_data);
 
   return (
     <div>
@@ -110,66 +101,6 @@ const SingleCryptoBody = (props) => {
               </table>
             </div>
 
-            {/*  <div className="single-crypto-container">
-              <div className="left">
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Market Rank</div>
-                  <div className="single-crypto-name">
-                    {props.crypto.market_cap_rank}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Supply</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.total_supply.usd}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Current Price</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.current_price.usd}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Market Cap</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.market_cap.usd}
-                  </div>
-                </div>
-              </div>
-              <div className="right">
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Volume</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.total_volume.usd}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">High(24h)</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.total_volume.usd}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Low(24h)</div>
-                  <div className="single-crypto-name">
-                    {singleCrypto.market_data.low_24h.usd}
-                  </div>
-                </div>
-                <div className="single-crypto-card">
-                  <div className="single-crypto-label">Price Change(24h)</div>
-                  <div className="single-crypto-name">
-                    ${singleCrypto.market_data.price_change_24h_in_currency.usd}{" "}
-                    (%:{" "}
-                    {
-                      singleCrypto.market_data
-                        .price_change_percentage_24h_in_currency.usd
-                    }
-                    )
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <div className="single-crypto-container desc">
               {singleCrypto.description.en}{" "}
             </div>

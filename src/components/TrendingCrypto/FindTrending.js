@@ -21,13 +21,12 @@ const FindTrending = () => {
 
   const trendingCryptoList = async () => {
     showLoader();
-    console.log("I am inside trending");
+
     try {
       const response = await searchTrendingList();
       setLoading(false);
       hideLoader();
 
-      console.log("trendinglist is ", response.data);
       setCryptos(response.data);
 
       if (response.status !== 200) {

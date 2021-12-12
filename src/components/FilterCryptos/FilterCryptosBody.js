@@ -12,7 +12,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FilterCryptosBody = (props) => {
-  console.log("props from filter crypto body is ", props);
   const [searchInput, setSearchInput] = useState("");
   const [cryptos, setCryptos] = useState([]);
   const [error, setError] = useState(false);
@@ -33,7 +32,7 @@ const FilterCryptosBody = (props) => {
       const response = await filterCryptoList(1);
       setLoading(false);
       hideLoader();
-      console.log(response.data);
+
       setCryptos(response.data);
 
       if (response.status !== 200) {
