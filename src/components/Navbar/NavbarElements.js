@@ -1,6 +1,5 @@
 import { FaBars } from "react-icons/fa";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faBars, faWindowClose } from "@fortawesome/free-solid-svg-icons";
+
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -28,7 +27,6 @@ export const NavLink = styled(Link)`
   }
 `;
 
-//export const Bars = FaBars;
 export const Bars = styled(FaBars)`
   display: none;
   color: #808080;

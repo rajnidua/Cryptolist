@@ -15,9 +15,6 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
-          {/* <NavLink to="/abc" activeStyle>
-            Search Crypto
-          </NavLink> */}
           <NavLink to="/trendingCrypto">TRENDING</NavLink>
 
           <NavLink to="/">SEARCH</NavLink>
