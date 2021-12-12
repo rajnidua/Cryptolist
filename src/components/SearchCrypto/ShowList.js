@@ -22,7 +22,7 @@ const ShowList = (props) => {
               <Link
                 to={{
                   pathname: "/singleCrypto",
-                  state: [crypto],
+                  state: [crypto.id],
                 }}
                 className="btn-img"
               >

@@ -68,7 +68,7 @@ const SingleCryptoBody = (props) => {
                   </tr>
                   <tr className="table-row">
                     <th scope="row">Supply</th>
-                    <td>{singleCrypto.market_data.total_supply.usd}</td>
+                    <td>{singleCrypto.market_data.total_supply}</td>
                   </tr>
                   <tr className="table-row">
                     <th scope="row">Current Price</th>
